@@ -33,7 +33,7 @@ function getManager() {
 
         var manager = new Manager(answers.name, answers.id, answers.email, answers.office);
 
-        // push the manager variable into employees array
+        //push manager into employees array
 
         // call the getMenu() function
     })
@@ -61,7 +61,11 @@ function getEngineer() {
             name: 'id',
             message: "Please enter engineer's github username"
         }
-    ])
+    ]) .then((answers) => {
+        console.log(answers)
+
+        var engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+    })
 }
 
 function getIntern() {
@@ -79,10 +83,21 @@ function getIntern() {
         {
             type: 'input',
             name: 'email',
+            message: "Please enter intern's email:"
+        },
+        {
+            type: 'input',
+            name: 'email',
             message: "Please enter intern's school:"
         },
-    ])
-}
+    ]) .then((answers) => {
+        console.log(answers)
 
-function buildTeam()
+        var intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+    }
+)}
+
+function buildTeam() {
+
+}
 
