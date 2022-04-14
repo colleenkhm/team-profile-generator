@@ -11,22 +11,22 @@ function getManager() {
         {
             type: 'input',
             name: 'name',
-            message: "What is the manager's name?"
+            message: "Please enter manager's name:"
         },
         {
             type: 'input',
             name: 'id',
-            message: 'Please enter your employee ID:'
+            message: "Please enter manager's employee ID:"
         },
         {
             type: 'input',
             name: 'email',
-            message: 'Please enter your email:'
+            message: "Please enter manager's email:"
         },
         {
             type: 'input',
             name: 'office',
-            message: 'Please enter your office number:'
+            message: "Please enter manager's office number:"
         }
     ]) .then((answers) => {
         console.log(answers)
@@ -39,9 +39,50 @@ function getManager() {
     })
 }
 
-function getEngineer()
+function getEngineer() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "Please enter engineer's name:"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Please enter engineer's employee ID:"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Please enter engineer's email:"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Please enter engineer's github username"
+        }
+    ])
+}
 
-function getIntern()
+function getIntern() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "Please enter intern's name:"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Please enter intern's employee ID:"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Please enter intern's school:"
+        },
+    ])
+}
 
 function buildTeam()
 
