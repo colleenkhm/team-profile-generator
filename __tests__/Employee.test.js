@@ -23,3 +23,15 @@ test('when calling getName(), the name is returned', () => {
 
     expect(employee.getName()).toBe('Cody')
 })
+
+test('when caling getId(), the ID is returned', () => {
+    const employee = new Employee('Cody', '234543', 'cody@gmail.com');
+
+    expect(employee.getId()).toBe('234543')
+})
+
+test('when calling getEmail(), the email is returned', () => {
+    const employee = new Employee('Cody', '234543', 'cody@gmail.com');
+
+    expect(employee.getEmail()).toBe('cody@gmail.com')
+})

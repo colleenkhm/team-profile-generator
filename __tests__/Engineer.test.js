@@ -5,3 +5,7 @@ test('when instantiating engineer, the github property is set', () => {
     expect(engineer.github).toBe('github')
 })
 
+test('when calling getGithub(), the github username is returned', () => {
+    const engineer = new Engineer('name', 'id', 'email', 'github')
+    expect(engineer.getGithub()).toBe('github')
+})
