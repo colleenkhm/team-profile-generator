@@ -44,28 +44,36 @@ const getManager = () => {
 }
 
 const getMenu = () => {
-    inquirer.prompt([
-        {
-            type: 'confirm',
-            name: 'confirmAdd',
-            message: 'Would you like to add another team member?',
-            default: true
-        },
-        {
-            type: 'list',
-            name: 'selectMember',
-            message: 'please select what type of team member you would like to add:',
-            choices: ['engineer', 'intern'],
-            when: ({ selectMember }) => {
-                //problem lies in here, automatically runs getIntern() meaning selectMember = engineer is not working the way I want it to
-                if ('selectMember' === 'engineer') {
-                    return getEngineer()
-                } else {
-                    return getIntern()
-                }
-            }
+    inquirer.prompt(
+    {
+        type: 'confirm',
+        name: 'confirmAdd',
+        message: 'Would you like to add another team member?',
+        default: true
+    })
+    .then(({ confirmAdd }) => {
+        if (confirmAdd === true) {
+            selectMember()
+        } else {
+            console.log('done building team')
         }
-    ])
+    })
+}
+
+const selectMember = () => {
+    inquirer.prompt({
+        type: 'list',
+        name: 'member',
+        message: 'Please select which type of member you would like to add:',
+        choices: ['engineer', 'intern']
+    })
+    .then(({ member }) => {
+        if (member === 'engineer') {
+            return getEngineer()
+        } else if (member === 'intern') {
+            return getIntern()
+        }
+    })
 }
 
 const getEngineer = () => {
@@ -87,8 +95,8 @@ const getEngineer = () => {
         },
         {
             type: 'input',
-            name: 'id',
-            message: "Please enter engineer's github username"
+            name: 'github',
+            message: "Please enter engineer's github username:"
         }
     ]) .then((answers) => {
         console.log(answers)
@@ -96,6 +104,8 @@ const getEngineer = () => {
         var engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
 
         employees.push(engineer)
+
+        console.log(employees)
     })
 }
 
