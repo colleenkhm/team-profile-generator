@@ -1,15 +1,37 @@
+const inquirer = require('inquirer');
+const { writeFile, copyFile } = require('./utils/generatePage');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-const generatePage = ('./src/page-template')
+const generateHTML = require('./src/page-template.js');
+const generatePage = require('./utils/generatePage.js')
 const employees = []
 
-const inquirer = require('inquirer');
-const { writeFile } = require('./utils/generatePage');
+function getMenu () {
+    inquirer.prompt(
+    {
+        type: 'list',
+        name: 'options',
+        message: 'What would you like to do?',
+        choices: ['Add an Engineer', 'Add an Intern', 'Finish building team']
+    }) .then((choice) => {
+        console.log(choice)
+            if (choice.options === 'Add an Engineer') {
+            getEngineer()
+            } 
+            if (choice.options === 'Add an Intern') {
+            getIntern()
+            }
+            if (choice.options === 'Finish building team') {
+                var pageHTML = generateHTML(employees)
+                buildTeam(pageHTML)
+        }
+    })
+}
 
 // TODO: write a function that asks questions pertaining to the manager
 const getManager = () => {
-    inquirer.prompt([
+    return inquirer.prompt([
         {
             type: 'input',
             name: 'name',
@@ -30,52 +52,31 @@ const getManager = () => {
             name: 'office',
             message: "Please enter manager's office number:"
         }
-    ]) .then((answers) => {
-        console.log(answers)
+    ]) .then((managerData) => {
+        console.log(managerData)
 
-        var manager = new Manager(answers.name, answers.id, answers.email, answers.office);
+        var manager = new Manager(managerData.name, managerData.id, managerData.email, managerData.office);
 
         //push manager into employees array
         employees.push(manager);
 
         // call the getMenu() function (maybe instead as a promise at the end??)
-        // .then(getMenu())
-    }) .then(getMenu)
-}
-
-const getMenu = () => {
-    inquirer.prompt(
-    {
-        type: 'confirm',
-        name: 'confirmAdd',
-        message: 'Would you like to add another team member?',
-        default: true
-    })
-    .then(({ confirmAdd }) => {
-        if (confirmAdd === true) {
-            selectMember()
-        } else {
-            console.log('done building team')
-        }
+        getMenu()
     })
 }
 
-const selectMember = () => {
-    inquirer.prompt({
-        type: 'list',
-        name: 'member',
-        message: 'Please select which type of member you would like to add:',
-        choices: ['engineer', 'intern']
-    })
-    .then(({ member }) => {
-        if (member === 'engineer') {
-            return getEngineer()
-        } else if (member === 'intern') {
-            return getIntern()
-        }
-    })
-}
+    //.then(({ member }) => {
+    //     if (member === 'engineer') {
+    //         return getEngineer()
+    //     } else if (member === 'intern') {
+    //         return getIntern()
+    //     }
+    // })
 
+// getMenu()
+// const buildTeam => {
+    
+// }
 const getEngineer = () => {
     inquirer.prompt([
         {
@@ -98,14 +99,16 @@ const getEngineer = () => {
             name: 'github',
             message: "Please enter engineer's github username:"
         }
-    ]) .then((answers) => {
-        console.log(answers)
+    ]) .then((engineerData) => {
+        console.log(engineerData)
 
-        var engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+        var engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
 
         employees.push(engineer)
 
         console.log(employees)
+
+        getMenu()
     })
 }
 
@@ -128,29 +131,41 @@ const getIntern = () => {
         },
         {
             type: 'input',
-            name: 'email',
+            name: 'school',
             message: "Please enter intern's school:"
         },
-    ]) .then((answers) => {
-        console.log(answers)
+    ]) .then((internData) => {
+        console.log(internData)
 
-        var intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+        var intern = new Intern(internData.name, internData.id, internData.email, internData.school);
         employees.push(intern)
-    }
-)}
+
+        getMenu()
+    })
+}
+
+const buildTeam = (teamData) => {
+    console.log(teamData)
+    // writeFile(teamData)
+    // copyFile()
+
+}
 
 getManager()
-
-
-// getManager()
-//     .then(teamData => {
-//         return (generatePage(teamData))
-//     })
-//     .then(pageHTML => {
-//         return (writeFile(pageHTML))
-//     })
-//     .catch(err => {
-//         console.log(err)
-//     })
-
-
+    // .then(employees => {
+    //     console.log(employees)
+    //     // return generateHTML(employees);
+    // })
+    // .then(pageHTML => {
+    //     return writeFile(pageHTML)
+    // })
+    // .then(writeFileResponse => {
+    //     console.log(writeFileResponse);
+    //     return copyFile();
+    // })
+    // .then(copyFileResponse => {
+    //     console.log(copyFileResponse)
+    // })
+    // .catch(err => {
+    //     console.log(err)
+    // });
