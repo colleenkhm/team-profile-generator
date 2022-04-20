@@ -1,14 +1,13 @@
+const engineerTemplateArr = []
+
 const generateManager = data => {
     var manager = data.filter(employee => employee.getRole() === 'Manager')
     console.log(manager)
     return `
-    // <p>
-    // ${manager[0].name}
-    // ${manager[0].id}
-    // ${manager[0].email}
-    // ${manager[0].office}
-    // </p>
-    // </div>
+    ${manager[0].name}
+    ${manager[0].id}
+    ${manager[0].email}
+    ${manager[0].office}
     `
     
 }
@@ -19,27 +18,23 @@ const generateEngineer = data => {
     var engineerArr = data.filter(employee => employee.getRole() === 'Engineer')
     console.log(engineerArr)
     // for (var i = 0, i < )
-    if (!data) {
-        return ''
-    }
-    const engineerTemplateArr = []
+
     for (var i = 0; i < engineerArr.length; i++) {
         let eName = engineerArr[i].name;
         let eId = engineerArr[i].id;
         let eEmail = engineerArr[i].email;
         let eGithub = engineerArr[i].github;
+        console.log(eName)
 
         var engineerTemplate =  `
-        <div class="employee-card"
             ${eName}
             ${eId}
             ${eEmail}
             ${eGithub}
-        </div>
         `
         
         engineerTemplateArr.push(engineerTemplate)
-    }
+    } return engineerTemplateArr
 }
 
 const generateIntern = data => {
