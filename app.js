@@ -3,9 +3,41 @@ const { writeFile, copyFile } = require('./utils/generatePage');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-const generateHTML = require('./src/page-template.js');
-const generatePage = require('./utils/generatePage.js')
+const generateIntern = require('./src/page-template')
+const generateEngineer = require('./src/page-template.js')
+const generateManager = require('./src/page-template.js')
+// const generateHTML = require('./src/page-template.js');
+// const generatePage = require('./utils/generatePage.js')
 const employees = []
+
+// const generateIntern = data => {
+//     const internTemplateArr = []
+//     var internArr = data.filter(employee => employee.getRole() === 'Intern')
+//     console.log(internArr)
+//     // for (var i = 0, i < )
+//     if (!data) {
+//         return ''
+//     }
+
+//     for (var i = 0; i < internArr.length; i++) {
+//         let iName = internArr[i].name;
+//         let iId = internArr[i].id;
+//         let iEmail = internArr[i].email;
+//         let iSchool = internArr[i].school;
+//         console.log(iName)
+
+//         var internTemplate =  `
+//             <div class="intern">
+//             ${iName}
+//             ${iId}
+//             ${iEmail}
+//             ${iSchool}
+//             </div>
+//         `
+        
+//         internTemplateArr.push(internTemplate)
+//     } return internTemplateArr
+// }
 
 function getMenu () {
     inquirer.prompt(
@@ -23,8 +55,7 @@ function getMenu () {
             getIntern()
             }
             if (choice.options === 'Finish building team') {
-                var pageHTML = generateHTML(employees)
-                buildTeam(pageHTML)
+                buildTeam()
         }
     })
 }
@@ -59,6 +90,8 @@ const getManager = () => {
 
         //push manager into employees array
         employees.push(manager);
+
+        console.log(employees)
 
         // call the getMenu() function (maybe instead as a promise at the end??)
         getMenu()
@@ -144,9 +177,14 @@ const getIntern = () => {
     })
 }
 
-const buildTeam = (teamData) => {
-    console.log(teamData)
-    // writeFile(teamData)
+const buildTeam = () => {
+    const employeeHTML = [];
+    const internHTML = generateIntern(employees)
+    console.log(internHTML)
+    // populate page template with employee data
+    // 
+    // console.log(employees)
+    // writeFile(employees)
     // copyFile()
 
 }
