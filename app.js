@@ -3,9 +3,9 @@ const { writeFile, copyFile } = require('./utils/generatePage');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
-const generateIntern = require('./src/page-template')
-const generateEngineer = require('./src/page-template.js')
-const generateManager = require('./src/page-template.js')
+const { generateIntern } = require('./src/page-template')
+const { generateEngineer } = require('./src/page-template.js')
+const { generateManager } = require('./src/page-template.js')
 // const generateHTML = require('./src/page-template.js');
 // const generatePage = require('./utils/generatePage.js')
 const employees = []
@@ -178,9 +178,15 @@ const getIntern = () => {
 }
 
 const buildTeam = () => {
-    const employeeHTML = [];
+    let employeeHTML = []
     const internHTML = generateIntern(employees)
-    console.log(internHTML)
+    const engineerHTML = generateEngineer(employees)
+    const managerHTML = generateManager(employees)
+    employeeHTML.push(internHTML)
+    employeeHTML.push(engineerHTML)
+    employeeHTML.push(managerHTML)
+    employeeHTML = JSON.stringify(employeeHTML)
+    writeFile(employeeHTML)
     // populate page template with employee data
     // 
     // console.log(employees)

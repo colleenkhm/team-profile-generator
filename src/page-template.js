@@ -6,10 +6,10 @@ const generateManager = data => {
     console.log(manager)
     return `
     <div class="manager"
-    ${manager[0].name}
-    ${manager[0].id}
-    ${manager[0].email}
-    ${manager[0].office}
+    ${manager.name}
+    ${manager.id}
+    ${manager.email}
+    ${manager.office}
     </div>
     `
 }
@@ -42,7 +42,7 @@ const generateEngineer = data => {
     } return engineerTemplateArr
 }
 
-function generateIntern() {
+const generateIntern = data => {
     var internArr = data.filter(employee => employee.getRole() === 'Intern')
     console.log(internArr)
 
