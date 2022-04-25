@@ -6,7 +6,7 @@ const generateManager = data => {
     <div class="employee card">
         <div class="card-title">${manager[0].name} (MANAGER)</div>
         <p class="content"><strong>Id:</strong> ${manager[0].id}</p>
-        <p class="content"><strong>Email:</strong> ${manager[0].email}</p>
+        <p class="content"><strong>Email:</strong> <a href="mailto: ${manager[0].email}">${manager[0].email}</a></p>
         <p class="content"><strong>Office Number:</strong> ${manager[0].office}</p>
     </div>
     `
@@ -31,8 +31,8 @@ const generateEngineer = data => {
             <div class="employee card">
                 <div class="card-title">${eName} (ENGINEER)</div>
                 <p class="content"><strong>Id:</strong> ${eId}</p>
-                <p class="content"><strong>Email:</strong> ${eEmail}</p>
-                <p class="content"><strong>Github:</strong> ${eGithub}</p>
+                <p class="content"><strong>Email:</strong> <a href= "mailto: ${eEmail}">${eEmail}</a></p>
+                <p class="content"><strong>Github:</strong> <a href="github.com/${eGithub}" target="_blank">${eGithub}</a></p>
             </div>
         `
         engineerTemplate.push(engineerCard)
@@ -60,7 +60,7 @@ const generateIntern = data => {
         <div class="employee card">
             <div class="card-title">${iName} (INTERN)</div>
             <p class="content"><strong>Id:</strong> ${iId}</p>
-            <p class="content"><strong>Email:</strong> ${iEmail}</p>
+            <p class="content"><strong>Email:</strong> <a href="mailto: ${iEmail}">${iEmail}</a></p>
             <p class="content"><strong>School:</strong> ${iSchool}</p>
         </div>
         `
