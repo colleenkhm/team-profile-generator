@@ -4,10 +4,12 @@ const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/index.html', fileContent, err => {
             if (err) {
+                console.log('your error is' + err);
                 reject(err);
                 return;
             }
 
+            console.log(fileContent);
             resolve({
                 ok: true,
                 message: 'File created!'

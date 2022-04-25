@@ -4,8 +4,9 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const { generateIntern } = require('./src/page-template')
-const { generateEngineer } = require('./src/page-template.js')
-const { generateManager } = require('./src/page-template.js')
+const { generateEngineer } = require('./src/page-template')
+const { generateManager } = require('./src/page-template')
+// const { employeeTemplateArr } = require('./src/page-template')
 // const generateHTML = require('./src/page-template.js');
 // const generatePage = require('./utils/generatePage.js')
 const employees = []
@@ -91,7 +92,7 @@ const getManager = () => {
         //push manager into employees array
         employees.push(manager);
 
-        console.log(employees)
+        // console.log(employees)
 
         // call the getMenu() function (maybe instead as a promise at the end??)
         getMenu()
@@ -133,13 +134,13 @@ const getEngineer = () => {
             message: "Please enter engineer's github username:"
         }
     ]) .then((engineerData) => {
-        console.log(engineerData)
+        // console.log(engineerData)
 
         var engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
 
         employees.push(engineer)
 
-        console.log(employees)
+        // console.log(employees)
 
         getMenu()
     })
@@ -168,7 +169,7 @@ const getIntern = () => {
             message: "Please enter intern's school:"
         },
     ]) .then((internData) => {
-        console.log(internData)
+        // console.log(internData)
 
         var intern = new Intern(internData.name, internData.id, internData.email, internData.school);
         employees.push(intern)
@@ -178,14 +179,18 @@ const getIntern = () => {
 }
 
 const buildTeam = () => {
+    console.log(employees)
     let employeeHTML = []
     const internHTML = generateIntern(employees)
     const engineerHTML = generateEngineer(employees)
     const managerHTML = generateManager(employees)
-    employeeHTML.push(internHTML)
-    employeeHTML.push(engineerHTML)
+    console.log(internHTML, engineerHTML, managerHTML)
     employeeHTML.push(managerHTML)
-    employeeHTML = JSON.stringify(employeeHTML)
+    employeeHTML.push(engineerHTML)
+    employeeHTML.push(internHTML)
+    console.log(employeeHTML)
+    employeeHTML = employeeHTML.join('')
+    console.log(typeof employeeHTML, employeeHTML)
     writeFile(employeeHTML)
     // populate page template with employee data
     // 

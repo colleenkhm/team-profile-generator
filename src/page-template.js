@@ -1,45 +1,44 @@
-const engineerTemplateArr = []
-const internTemplateArr = []
-
 const generateManager = data => {
     var manager = data.filter(employee => employee.getRole() === 'Manager')
     console.log(manager)
-    return `
-    <div class="manager"
-    ${manager.name}
-    ${manager.id}
-    ${manager.email}
-    ${manager.office}
+
+    var managerTemplate = `
+    <div class="employee-card">
+    <p>Manager Name: ${manager[0].name}<p>
+    <p>Manager Id: ${manager[0].id}</p>
+    <p>Manager Email: ${manager[0].email}</p>
+    Manager Office Number: ${manager[0].office}
     </div>
     `
+    return managerTemplate
 }
 
 const generateEngineer = data => {
     var engineerArr = data.filter(employee => employee.getRole() === 'Engineer')
-    console.log(engineerArr)
-    // for (var i = 0, i < )
+
     if (!data) {
         return ''
     }
 
+    var engineerTemplate = []
     for (var i = 0; i < engineerArr.length; i++) {
         let eName = engineerArr[i].name;
         let eId = engineerArr[i].id;
         let eEmail = engineerArr[i].email;
         let eGithub = engineerArr[i].github;
-        console.log(eName)
 
-        var engineerTemplate =  `
-            <div class="engineer">
-            ${eName}
-            ${eId}
-            ${eEmail}
-            ${eGithub}
+        var engineerCard =  `
+            <div class="employee-card">
+            <p>Engineer Name: ${eName}</p>
+            <p>Engineer Id: ${eId}</p>
+            <p>Engineer Email: ${eEmail}</p>
+            <p>Engineer Github: ${eGithub}</p>
             </div>
         `
-        
-        engineerTemplateArr.push(engineerTemplate)
-    } return engineerTemplateArr
+        engineerTemplate.push(engineerCard)
+    } 
+    engineerTemplate = engineerTemplate.join('')
+    return engineerTemplate
 }
 
 const generateIntern = data => {
@@ -50,35 +49,27 @@ const generateIntern = data => {
         return ''
     }
 
+    var internTemplate = [];
     for (var i = 0; i < internArr.length; i++) {
         let iName = internArr[i].name;
         let iId = internArr[i].id;
         let iEmail = internArr[i].email;
         let iSchool = internArr[i].school;
-        console.log(iName)
 
-        var internTemplate =  `
-            <div class="intern">
-            ${iName}
-            ${iId}
-            ${iEmail}
-            ${iSchool}
+        var internCard =  `
+            <div class="employee-card">
+                <p>Intern Name: ${iName}</p>
+                <p>Intern Id: ${iId}</p>
+                <p>Intern Email: ${iEmail}</p>
+                <p>Intern School: ${iSchool}</p>
             </div>
         `
-        
-        internTemplateArr.push(internTemplate)
-    } return internTemplateArr
+        internTemplate.push(internCard)
+    } 
+    internTemplate = internTemplate.join('')
+    return internTemplate
 }
 
 module.exports = {
     generateEngineer, generateManager, generateIntern
 }
-
-// module.exports = templateData => {
-//     console.log(templateData)
-//     return `${generateManager(templateData)}
-//     ${generateEngineer(templateData)}
-//     ${generateIntern(templateData)}
-//     `
-// }
-// ${generateManager(managerData)}
