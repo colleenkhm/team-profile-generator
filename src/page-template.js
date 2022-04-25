@@ -4,10 +4,10 @@ const generateManager = data => {
 
     var managerTemplate = `
     <div class="employee-card">
-    <p>Manager Name: ${manager[0].name}<p>
-    <p>Manager Id: ${manager[0].id}</p>
-    <p>Manager Email: ${manager[0].email}</p>
-    Manager Office Number: ${manager[0].office}
+        <p class="title">Manager Name: ${manager[0].name}<p>
+        <p class="title">Manager Id: ${manager[0].id}</p>
+        <p class="title">Manager Email: ${manager[0].email}</p>
+        <p class="title">Manager Office Number: ${manager[0].office}</p>
     </div>
     `
     return managerTemplate
@@ -29,10 +29,10 @@ const generateEngineer = data => {
 
         var engineerCard =  `
             <div class="employee-card">
-            <p>Engineer Name: ${eName}</p>
-            <p>Engineer Id: ${eId}</p>
-            <p>Engineer Email: ${eEmail}</p>
-            <p>Engineer Github: ${eGithub}</p>
+                <p class="title">Engineer Name: ${eName}</p>
+                <p class="title">Engineer Id: ${eId}</p>
+                <p class="title">Engineer Email: ${eEmail}</p>
+                <p class="title">Engineer Github: ${eGithub}</p>
             </div>
         `
         engineerTemplate.push(engineerCard)
@@ -58,10 +58,10 @@ const generateIntern = data => {
 
         var internCard =  `
             <div class="employee-card">
-                <p>Intern Name: ${iName}</p>
-                <p>Intern Id: ${iId}</p>
-                <p>Intern Email: ${iEmail}</p>
-                <p>Intern School: ${iSchool}</p>
+                <p class="title">Intern Name: ${iName}</p>
+                <p class="title">Intern Id: ${iId}</p>
+                <p class="title">Intern Email: ${iEmail}</p>
+                <p class="title">Intern School: ${iSchool}</p>
             </div>
         `
         internTemplate.push(internCard)
