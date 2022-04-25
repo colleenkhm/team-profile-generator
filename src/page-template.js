@@ -3,11 +3,11 @@ const generateManager = data => {
     console.log(manager)
 
     var managerTemplate = `
-    <div class="employee-card">
-        <p class="title">Manager Name: ${manager[0].name}<p>
-        <p class="title">Manager Id: ${manager[0].id}</p>
-        <p class="title">Manager Email: ${manager[0].email}</p>
-        <p class="title">Manager Office Number: ${manager[0].office}</p>
+    <div class="employee card">
+        <div class="card-title">${manager[0].name} (MANAGER)</div>
+        <p class="content"><strong>Id:</strong> ${manager[0].id}</p>
+        <p class="content"><strong>Email:</strong> ${manager[0].email}</p>
+        <p class="content"><strong>Office Number:</strong> ${manager[0].office}</p>
     </div>
     `
     return managerTemplate
@@ -28,11 +28,11 @@ const generateEngineer = data => {
         let eGithub = engineerArr[i].github;
 
         var engineerCard =  `
-            <div class="employee-card">
-                <p class="title">Engineer Name: ${eName}</p>
-                <p class="title">Engineer Id: ${eId}</p>
-                <p class="title">Engineer Email: ${eEmail}</p>
-                <p class="title">Engineer Github: ${eGithub}</p>
+            <div class="employee card">
+                <div class="card-title">${eName} (ENGINEER)</div>
+                <p class="content"><strong>Id:</strong> ${eId}</p>
+                <p class="content"><strong>Email:</strong> ${eEmail}</p>
+                <p class="content"><strong>Github:</strong> ${eGithub}</p>
             </div>
         `
         engineerTemplate.push(engineerCard)
@@ -57,12 +57,12 @@ const generateIntern = data => {
         let iSchool = internArr[i].school;
 
         var internCard =  `
-            <div class="employee-card">
-                <p class="title">Intern Name: ${iName}</p>
-                <p class="title">Intern Id: ${iId}</p>
-                <p class="title">Intern Email: ${iEmail}</p>
-                <p class="title">Intern School: ${iSchool}</p>
-            </div>
+        <div class="employee card">
+            <div class="card-title">${iName} (INTERN)</div>
+            <p class="content"><strong>Id:</strong> ${iId}</p>
+            <p class="content"><strong>Email:</strong> ${iEmail}</p>
+            <p class="content"><strong>School:</strong> ${iSchool}</p>
+        </div>
         `
         internTemplate.push(internCard)
     } 

@@ -6,39 +6,7 @@ const Manager = require('./lib/Manager');
 const { generateIntern } = require('./src/page-template')
 const { generateEngineer } = require('./src/page-template')
 const { generateManager } = require('./src/page-template')
-// const { employeeTemplateArr } = require('./src/page-template')
-// const generateHTML = require('./src/page-template.js');
-// const generatePage = require('./utils/generatePage.js')
 const employees = []
-
-// const generateIntern = data => {
-//     const internTemplateArr = []
-//     var internArr = data.filter(employee => employee.getRole() === 'Intern')
-//     console.log(internArr)
-//     // for (var i = 0, i < )
-//     if (!data) {
-//         return ''
-//     }
-
-//     for (var i = 0; i < internArr.length; i++) {
-//         let iName = internArr[i].name;
-//         let iId = internArr[i].id;
-//         let iEmail = internArr[i].email;
-//         let iSchool = internArr[i].school;
-//         console.log(iName)
-
-//         var internTemplate =  `
-//             <div class="intern">
-//             ${iName}
-//             ${iId}
-//             ${iEmail}
-//             ${iSchool}
-//             </div>
-//         `
-        
-//         internTemplateArr.push(internTemplate)
-//     } return internTemplateArr
-// }
 
 function getMenu () {
     inquirer.prompt(
@@ -67,80 +35,125 @@ const getManager = () => {
         {
             type: 'input',
             name: 'name',
-            message: "Please enter manager's name:"
+            message: "Please enter manager's name:",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter name!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'id',
-            message: "Please enter manager's employee ID:"
+            message: "Please enter manager's employee ID:",
+            validate: idInput => {
+                if (idInput) {
+                    return true;
+                } else {
+                    console.log('Please enter ID!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'email',
-            message: "Please enter manager's email:"
+            message: "Please enter manager's email:",
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log('Please enter email!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'office',
-            message: "Please enter manager's office number:"
+            message: "Please enter manager's office number:",
+            validate: officeInput => {
+                if (officeInput) {
+                    return true;
+                } else {
+                    console.log('Please enter office number!');
+                    return false;
+                }
+            }
         }
     ]) .then((managerData) => {
         console.log(managerData)
 
         var manager = new Manager(managerData.name, managerData.id, managerData.email, managerData.office);
 
-        //push manager into employees array
         employees.push(manager);
 
-        // console.log(employees)
-
-        // call the getMenu() function (maybe instead as a promise at the end??)
         getMenu()
     })
 }
 
-    //.then(({ member }) => {
-    //     if (member === 'engineer') {
-    //         return getEngineer()
-    //     } else if (member === 'intern') {
-    //         return getIntern()
-    //     }
-    // })
-
-// getMenu()
-// const buildTeam => {
-    
-// }
 const getEngineer = () => {
     inquirer.prompt([
         {
             type: 'input',
             name: 'name',
-            message: "Please enter engineer's name:"
+            message: "Please enter engineer's name:",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter name!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'id',
-            message: "Please enter engineer's employee ID:"
+            message: "Please enter engineer's employee ID:",
+            validate: idInput => {
+                if (idInput) {
+                    return true;
+                } else {
+                    console.log('Please enter ID!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'email',
-            message: "Please enter engineer's email:"
+            message: "Please enter engineer's email:",
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log('Please enter email!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'github',
-            message: "Please enter engineer's github username:"
+            message: "Please enter engineer's github username:",
+            validate: githubInput => {
+                if (githubInput) {
+                    return true;
+                } else {
+                    console.log('Please enter github!');
+                    return false;
+                }
+            }
         }
     ]) .then((engineerData) => {
-        // console.log(engineerData)
 
         var engineer = new Engineer(engineerData.name, engineerData.id, engineerData.email, engineerData.github);
 
         employees.push(engineer)
-
-        // console.log(employees)
 
         getMenu()
     })
@@ -151,22 +164,54 @@ const getIntern = () => {
         {
             type: 'input',
             name: 'name',
-            message: "Please enter intern's name:"
+            message: "Please enter intern's name:",
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    console.log('Please enter name!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'id',
-            message: "Please enter intern's employee ID:"
+            message: "Please enter intern's employee ID:",
+            validate: idInput => {
+                if (idInput) {
+                    return true;
+                } else {
+                    console.log('Please enter ID!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'email',
-            message: "Please enter intern's email:"
+            message: "Please enter intern's email:",
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                } else {
+                    console.log('Please enter email!');
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'school',
-            message: "Please enter intern's school:"
+            message: "Please enter intern's school:",
+            validate: schoolInput => {
+                if (schoolInput) {
+                    return true;
+                } else {
+                    console.log('Please enter school!');
+                    return false;
+                }
+            }
         },
     ]) .then((internData) => {
         // console.log(internData)
@@ -188,33 +233,40 @@ const buildTeam = () => {
     employeeHTML.push(managerHTML)
     employeeHTML.push(engineerHTML)
     employeeHTML.push(internHTML)
-    console.log(employeeHTML)
     employeeHTML = employeeHTML.join('')
-    console.log(typeof employeeHTML, employeeHTML)
-    writeFile(employeeHTML)
-    // populate page template with employee data
-    // 
-    // console.log(employees)
-    // writeFile(employees)
-    // copyFile()
+
+    var pageTemplate = `
+    <!DOCTYPE html>
+    <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <title>Team Profile</title>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="style.css">
+        </head>
+
+        <body>
+            <header>
+                <h1>MY TEAM</h1>
+            </header>
+            <div class="container-fluid">
+                <div class="row">
+                    <section class="card-container col-md-12">
+                        ${employeeHTML}
+                    </section>
+                </div>
+            </div>
+        </body>
+    </html>
+    `
+
+    writeFile(pageTemplate)
+    copyFile()
 
 }
 
 getManager()
-    // .then(employees => {
-    //     console.log(employees)
-    //     // return generateHTML(employees);
-    // })
-    // .then(pageHTML => {
-    //     return writeFile(pageHTML)
-    // })
-    // .then(writeFileResponse => {
-    //     console.log(writeFileResponse);
-    //     return copyFile();
-    // })
-    // .then(copyFileResponse => {
-    //     console.log(copyFileResponse)
-    // })
-    // .catch(err => {
-    //     console.log(err)
-    // });
+
