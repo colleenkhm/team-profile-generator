@@ -11,6 +11,6 @@ An app for businesses that collects user-input information about team members an
  - Node.js
 
 ## Website
-
+[![Watch the video](tpg-walkthrough.webm)](Walkthrough)
 ## Contributing
 Made by Colleen Murray
