@@ -1,15 +1,17 @@
 # Team Profile Generator
 
 ## Description
-An app for businesses that collects user-input information about team members and organizes/displays that information.
+An app for business managers that collects user-input information about team members and organizes/displays that information for tracking purposes.
 
 ## Built With
- - CSS
- - JavaScript
- - Inquirer
  - Node.js
+ - Inquirer
 
-## Website
-[![Watch the video](tpg-walkthrough.webm)](Walkthrough)
+## Installation
+- npm install
+
+## Usage
+- npm start
+
 ## Contributing
 Made by Colleen Murray
