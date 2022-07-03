@@ -1,10 +1,10 @@
 body {
-    background-color: lavender;
+    background-color: rgb(228, 245, 238);
 }
 
 h1 {
     text-align: center;
-    color: lightpink;
+    color: rgb(26, 73, 56);
 }
 
 .card-container {
@@ -15,7 +15,7 @@ h1 {
 .card {
     font-size: 20px;
     color: white;
-    background-color: lightpink;
+    background-color: rgb(26, 73, 56);
     margin: 5px;
     padding: 10px;
     min-width: 300px;
@@ -24,6 +24,7 @@ h1 {
 .card-title {
     display: center;
     font-size: 30px;
-    background: lightblue;
-    color: darkslateblue;
+    background: rgb(204, 247, 229);
+    color: rgb(26, 73, 56);
+    font-weight: bold;
 }
